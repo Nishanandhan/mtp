@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+{% block content %}
+
+<h1 style="text-align: center;" class="m-2">Input values</h1>
+
+<form action='{{ url_for("predict") }}' method="POST">
+
+<input type="text" name="crop_variety" hidden value="{{ data }}">
+
+<div class="form-row">
+	<div class="form-group col-md-3">
+		<label for="phone">XRF Fe(ppm)</label>
+		<input type="text" name="xrf_fe" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF K(%)</label>
+		<input type="text" name="xrf_k" min="0" max="100" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Ti(ppm)</label>
+		<input type="text" name="xrf_ti" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Ca(%)</label>
+		<input type="text" name="xrf_ca" min="0" max="100" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Ba(%)</label>
+		<input type="text" name="xrf_ba" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Zr(ppm)</label>
+		<input type="text" name="xrf_zr" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Mn(ppm)</label>
+		<input type="text" name="xrf_mn" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Rb(ppm)</label>
+		<input type="text" name="xrf_rb" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Cr(ppm)</label>
+		<input type="text" name="xrf_cr" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Sn(ppm)</label>
+		<input type="text" name="xrf_sn" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF V(ppm)</label>
+		<input type="text" name="xrf_v" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Ni(ppm)</label>
+		<input type="text" name="xrf_ni" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Sr(ppm)</label>
+		<input type="text" name="xrf_sr" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Zn(ppm)</label>
+		<input type="text" name="xrf_zn" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Sb(ppm)</label>
+		<input type="text" name="xrf_sb" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Cu(ppm)</label>
+		<input type="text" name="xrf_cu" class="form-control" required>
+		</div>
+	</div>
+<div class="form-row">
+		<div class="form-group col-md-3 ml-auto">
+		<label for="phone">XRF Pb(ppm)</label>
+		<input type="text" name="xrf_pb" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">XRF Ag(ppm)</label>
+		<input type="text" name="xrf_ag" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3 mr-auto">
+		<label for="phone">XRF Ga(ppm)</label>
+		<input type="text" name="xrf_ga" class="form-control" required>
+		</div>
+
+</div>
+
+<div class="form-row">
+	<div class="form-group col-md-3">
+		<label for="phone">pH</label>
+		<input type="text" name="ph" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">LOI (%)</label>
+		<input type="text" name="loi" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">OC (%)</label>
+		<input type="text" name="oc" class="form-control" required>
+		</div>
+
+		<div class="form-group col-md-3">
+		<label for="phone">EC (dS/m)</label>
+		<input type="text" name="ec" class="form-control" required>
+	</div>
+</div>
+
+
+
+<div class="form-row">
+	<div class="form-group col-md-6">
+		<label for="agro_climatic_region">Agro Climatic Region:</label>
+		<select name="agro_climatic_region" class="form-control" id="agro_climatic_region">
+			<option selected disabled>Select Agro Climatic Region</option>
+			<option value="Coastal saline">Coastal saline</option>
+			<option value="Gangetic alluvial">Gangetic alluvial</option>
+			<option value="Northern hilley zone">Northern hilley zone</option>
+			<option value="Red lateritic">Red lateritic</option>
+			<option value="Terai-Teesta alluvial">Terai-Teesta alluvial</option>
+			<option value="Vindhyachal alluvial">Vindhyachal alluvial</option>
+		</select>
+	</div>
+
+	<div class="form-group col-md-6">
+		<label for="parent_material">Parent Material:</label>
+		<select name="parent_material" class="form-control" id="parent_material">
+			<option selected disabled>Select Parent Material</option>
+			<option value="Deltaic alluvium">Deltaic alluvium</option>
+			<option value="Granite gneiss">Granite gneiss</option>
+			<option value="Old alluvium">Old alluvium</option>
+			<option value="Recent">Recent</option>
+		</select>
+	</div>
+
+	<div class="form-group col-md-6">
+		<label for="order">Order:</label>
+		<select name="order" class="form-control" id="order">
+			<option selected disabled>Select Order</option>
+			<option value="Alfisol">Alfisol</option>
+			<option value="Entisol">Entisol</option>		
+			<option value="Inceptisol">Inceptisol</option>
+		</select>
+	</div>
+
+	<div class="form-group col-md-6">
+		<label for="productivity_potential">Productivity Potential:</label>
+		<select name="productivity_potential" class="form-control" id="productivity_potential">
+			<option selected disabled>Select Productivity Potential</option>
+			<option value="Low">Low</option>
+			<option value="Medium">Medium</option>		
+			<option value="High">High</option>
+		</select>
+	</div>
+</div>
+
+
+
+<button type="submit" class="btn btn-primary">Predict</button>
+</form>
+{% endblock %}
+
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="data.js"></script>
+<script>
+	var crop_group_data = {"Cereals": ["Rice", "Wheat", "Maize", "Corn", "Barley"], "Pulses": ["Green gram", "Black gram", "Red gram", "Bengal gram", "Cowpea", "Chickpea", "Lentil"], "Oilseeds": ["Mustard", "Sesame", "Rapeseed", "Groundnut", "Soybean", "Sunflower"],"Vegetables": ["Potato", "Onion", "Tomato", "Chilli", "Cauliflower", "Broccoli", "Cabbage", "Beans", "Cucumber", "Garlic", "Okra"], "Fruits": ["Mango", "Grapes", "Apple", "Orange", "Guava", "Lichi", "Papaya"], "Cash crops": ["Jute", "Sugarcane", "Cotton"]};
+
+	$("#crop_group").on('change', function() {
+		var crops = crop_group_data[this.value];
+		var cro = "<option selected disabled>Select Crop</option>";
+		for (let i = 0; i < crops.length ; i++) {
+			cro += "<option value='" + crops[i] + "'>" + crops[i] + "</option>\n";
+		}
+		//console.log(dis);
+		$("#crop").html(cro);
+	});
+
+</script>
+</body>
+</html>
